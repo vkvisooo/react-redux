@@ -1,37 +1,11 @@
-// import React from "react";
-// import { render } from "react-dom";
-
-// import { User } from './components/User';
-// import { Main } from './components/Main';
-
-// class App extends React.Component {
-//     constructor() {
-//         super();
-//         this.state = {
-//             username: "Max"
-//         };
-//     }
-
-//     changeUsername(newName) {
-//         this.setState({
-//             username: newName
-//         });
-//     }
-
-//     render() {
-//         return (
-//             <div className="container">
-//                 <Main changeUsername={this.changeUsername.bind(this)} />
-//                 <User username={this.state.username} />
-//             </div>
-//         );
-//     }
-// }
-
-// render(<App />, window.document.getElementById('app'));
+import React from "react";
+import { render } from "react-dom";
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { createLogger } from "redux-logger";
+import { Provider } from 'react-redux';
+import App from './components/App';
+
 
 const initialState = {
     result: 1,
@@ -87,23 +61,14 @@ const store = createStore(
     applyMiddleware(createLogger())
 );
 
-store.subscribe(() => {
-    console.log("updated store", store.getState())
-})
+// store.subscribe(() => {
+//     console.log("updated store", store.getState())
+// })
 
-store.dispatch({
-    type: "ADD",
-    payload: 10
-})
-store.dispatch({
-    type: "SUBTRACT",
-    payload: 1
-})
-store.dispatch({
-    type: "AGE",
-    payload: 26
-})
-store.dispatch({
-    type: "NAME",
-    payload: "Vishal Kashyap"
-})
+
+render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('app')
+)
