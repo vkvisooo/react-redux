@@ -2,6 +2,7 @@ import React from "react";
 
 export class User extends React.Component {
     render() {
+        // console.log(this.props.httprequest)
         return (
             <div>
                 <div className="row">
@@ -12,6 +13,9 @@ export class User extends React.Component {
                 <div className="row">
                     <div className="col-xs-12">
                         <p>User Name: {this.props.username}</p>
+                    </div>
+                    <div>
+                        HTTP REQUEST : {JSON.stringify(this.props.httprequest)}
                     </div>
                 </div>
             </div>

@@ -9,7 +9,7 @@ const nameReducer = (state = {
                 age: action.payload,
             }
             break;
-        case "NAME":
+        case "NAME_FULFILLED":
             state = {
                 ...state,
                 name: action.payload,
