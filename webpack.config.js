@@ -19,6 +19,11 @@ var config = {
                 query: {
                     presets: ["react", "es2015", "stage-2"]
                 }
+            },
+            {
+                test: /\.styl$/,
+                include: SRC_DIR,
+                loader: 'style-loader!css-loader!stylus-loader'
             }
         ]
     }

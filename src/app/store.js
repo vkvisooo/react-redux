@@ -17,3 +17,11 @@ const Store = createStore(
     applyMiddleware(createLogger(), Promise())
 );
 export default Store;
+
+// above code for combine reducers is shorthand syntax actually it look something like this
+// combineReducers({
+//     mathReducer:mathReducer,
+//     nameReducer:nameReducer,
+//     serviceReducer:serviceReducer,
+//     requestReducer:requestReducer
+// })
