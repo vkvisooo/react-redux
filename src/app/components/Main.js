@@ -1,9 +1,10 @@
 import React from "react";
+import "./main.scss";
 
 export class Main extends React.Component {
     render() {
         return (
-            <div>
+            <div className="new-background">
                 <div className="row">
                     <div className="col-xs-12">
                         <h1>The Main Page</h1>

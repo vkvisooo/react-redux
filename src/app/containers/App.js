@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { User } from '../components/User';
 import { Main } from '../components/Main';
+import { Link } from "react-router-dom";
 import { setName } from '../actions/userActions';
 import serviceReducer from '../reducers/serviceReducer';
 import { httpRequest } from '../actions/serviceActions';
@@ -54,6 +55,8 @@ class App extends React.Component {
 
         return (
             <div className="container" style={pStyle}>
+                <p><Link to={"/user"}>Link user</Link></p>
+                <p><a href="/user">Anchor User</a></p>
                 <img style={{ display: loader ? 'none' : 'block' }} src={'/assets/images/loader.gif'} />
                 <div style={{ display: loader ? 'block' : 'none' }} onClick={this.props.axiosrequest}>
                     <Main changeUsername={(name) => this.props.setName(name)} />
