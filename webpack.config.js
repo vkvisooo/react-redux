@@ -21,11 +21,13 @@ var config = {
                 }
             },
             {
-                test: /\.styl$/,
-                include: SRC_DIR,
-                loader: 'style-loader!css-loader!stylus-loader'
+                test: /\.(s*)css$/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
             }
         ]
+    },
+    devServer: {
+        port: 4040
     }
 };
 
