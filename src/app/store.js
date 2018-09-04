@@ -5,13 +5,17 @@ import nameReducer from './reducers/nameReducer';
 import Promise from 'redux-promise-middleware';
 import serviceReducer from './reducers/serviceReducer';
 import requestReducer from './reducers/requestReducer';
+import ToffeeReducer from './reducers/toffeeReducer';
+import learnReducer from "./reducers/learnReducer";
 
 const Store = createStore(
     combineReducers({
         mathReducer,
         nameReducer,
         serviceReducer,
-        requestReducer
+        requestReducer,
+        ToffeeReducer,
+        learnReducer
     }),
     {},
     applyMiddleware(createLogger(), Promise())

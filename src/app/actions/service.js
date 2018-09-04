@@ -10,8 +10,9 @@ export const requestCall = (requestBody) => {
         if (requestBody.data) {
             request.data = JSON.stringify(requestBody.data) || "";
         }
+        console.log(request)
         request.headers['Content-Type'] = 'application/json';
-        axios(request).then(response => { resolve({ ...response.data, loader: true }) }).then(resolve.data).catch(error => {
+        axios(request).then(response => { resolve({ ...response, loader: true }) }).then(resolve.data).catch(error => {
             reject(error.response ? error.response : error)
         });
     });

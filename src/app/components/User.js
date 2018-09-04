@@ -1,8 +1,21 @@
 import React from "react";
+import LoaderHoc from "../hoc/LoaderHoc";
 
-export class User extends React.Component {
+class User extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            httprequest: props.httprequest
+        }
+    }
+    click() {
+        this.setState({
+            httprequest: "harkuch"
+        })
+    }
     render() {
-        // console.log(this.props.httprequest)
+        console.log(this.props.httprequest + "Props request")
+        console.log(this.state.httprequest + "state request")
         return (
             <div>
                 <div className="row">
@@ -17,8 +30,10 @@ export class User extends React.Component {
                     <div>
                         HTTP REQUEST : {JSON.stringify(this.props.httprequest)}
                     </div>
+                    <button onClick={() => this.click()}>Click me</button>
                 </div>
             </div>
         );
     }
 }
+export default LoaderHoc('httprequest')(User);

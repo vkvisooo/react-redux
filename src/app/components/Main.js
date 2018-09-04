@@ -1,5 +1,4 @@
 import React from "react";
-import "./main.scss";
 
 export class Main extends React.Component {
     render() {

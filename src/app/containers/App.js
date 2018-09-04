@@ -1,15 +1,12 @@
-import React from "react";
+import React, { ProtoTypes } from "react";
 import { connect } from 'react-redux';
 
-import { User } from '../components/User';
 import { Main } from '../components/Main';
 import { Link } from "react-router-dom";
 import { setName } from '../actions/userActions';
-import serviceReducer from '../reducers/serviceReducer';
 import { httpRequest } from '../actions/serviceActions';
-import requestReducer from '../reducers/requestReducer';
 import { fakeRequestAction, axiosRequest } from '../actions/requestActions';
-
+import User from "../components/User";
 
 
 const pStyle = {
@@ -30,13 +27,14 @@ const requestBody1 = {
     headers: {}
 }
 const requestBody2 = {
-    url: "https://jsonplaceholder.typicode.com/posts",
+    url: "https://jsonplaceholder.typicode.com/comments",
     method: "GET",
     headers: {}
 }
 class App extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        console.log(props)
         this.state = {
             loader: false,
         }
@@ -50,16 +48,16 @@ class App extends React.Component {
     }
 
     render() {
-        let loader = this.props.request.fakeRequest ? this.props.request.fakeRequest.loader : false;
-        console.log(this.props.request.fakeRequest ? this.props.request.fakeRequest.length : "unknown")
+        // let loader = this.props.request.fakeRequest ? this.props.request.fakeRequest.loader : false;
+        // console.log(this.props.request.fakeRequest ? this.props.request.fakeRequest.length : "unknown")
 
         return (
             <div className="container" style={pStyle}>
-                <p><Link to={"/user"}>Link user</Link></p>
+                <p><Link to={"/user/karlepata"}>Link user</Link></p>
                 <p><a href="/user">Anchor User</a></p>
-                <img style={{ display: loader ? 'none' : 'block' }} src={'/assets/images/loader.gif'} />
-                <div style={{ display: loader ? 'block' : 'none' }} onClick={this.props.axiosrequest}>
-                    <Main changeUsername={(name) => this.props.setName(name)} />
+                {/* <img style={{ display: loader ? 'none' : 'block' }} src={'/assets/images/loader.gif'} /> */}
+                <div>
+                    {/* <Main name="name" changeUsername={(name) => this.props.setName(name)} /> */}
                     <User username={this.props.user.name} httprequest={this.props.http.httpRequest} />
                 </div>
             </div>
