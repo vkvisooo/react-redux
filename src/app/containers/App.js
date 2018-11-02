@@ -37,6 +37,7 @@ class App extends React.Component {
         console.log(props)
         this.state = {
             loader: false,
+            check: "it has the default value"
         }
     }
 
@@ -46,20 +47,27 @@ class App extends React.Component {
         this.props.axiosRequest(requestBody1);
         this.props.fakeRequest(requestBody2);
     }
-
+    componentDidMount() {
+        console.log("component didi mount");
+        this.setState({
+            check: "value has been changed",
+        })
+        console.log(this.state.check);
+    }
     render() {
         // let loader = this.props.request.fakeRequest ? this.props.request.fakeRequest.loader : false;
         // console.log(this.props.request.fakeRequest ? this.props.request.fakeRequest.length : "unknown")
 
         return (
             <div className="container" style={pStyle}>
-                <p><Link to={"/user/karlepata"}>Link user</Link></p>
+                <p><Link to={"/user"}>Link user</Link></p>
                 <p><a href="/user">Anchor User</a></p>
                 {/* <img style={{ display: loader ? 'none' : 'block' }} src={'/assets/images/loader.gif'} /> */}
                 <div>
                     {/* <Main name="name" changeUsername={(name) => this.props.setName(name)} /> */}
                     <User username={this.props.user.name} httprequest={this.props.http.httpRequest} />
                 </div>
+
             </div>
         );
     }

@@ -14,7 +14,10 @@ class Form extends React.Component {
                 lastname: '',
                 age: '',
             },
-            errors: {}
+            errors: {},
+            text: "Change This Text",
+            checked: false
+
         }
         this.array = [];
     };
@@ -77,6 +80,24 @@ class Form extends React.Component {
         }
         )
     }
+    changeFromChildComponent(value) {
+        console.log(value)
+        this.setState({
+            text: value
+        })
+    }
+    selectAll(e) {
+        this.state.checked = !this.state.checked;
+        console.log(this.state.checked);
+        let child_chekboxes = e.target.nextSibling.childNodes;
+        for (let check of child_chekboxes) {
+            check.checked = this.state.checked;
+        }
+
+        this.setState({
+            checked: this.state.checked
+        })
+    }
 
     render() {
         console.log("render")
@@ -127,9 +148,22 @@ class Form extends React.Component {
                     </div>
                     <button type="button" className="btn btn-primary" onBlur={(e) => this.blur(e)} onClick={() => this.click()}>CLick ME</button>
                 </form>
-
-                <StatelessComponent name={'StatelessComponent'} />
+                <br /><br />
+                <p>{this.state.text}</p>
+                <StatelessComponent text={this.state.text} childChange={this.changeFromChildComponent.bind(this)} name={'StatelessComponent'} />
                 <Link to={'/'}>Landing</Link>
+                <div className="checkbox-container">
+                    <input type="checkbox" onChange={(e) => this.selectAll(e)} checked={this.state.checked} />
+                    <div className="child-checkbox">
+                        <input type="checkbox" />
+                        <input type="checkbox" />
+                        <input type="checkbox" />
+                        <input type="checkbox" />
+                        <input type="checkbox" />
+                        <input type="checkbox" />
+                        <input type="checkbox" />
+                    </div>
+                </div>
             </div >
         )
     }

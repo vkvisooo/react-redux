@@ -18,7 +18,7 @@ const Store = createStore(
         learnReducer
     }),
     {},
-    applyMiddleware(createLogger(), Promise())
+    applyMiddleware(Promise())
 );
 export default Store;
 
